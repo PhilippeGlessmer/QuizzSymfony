@@ -3,35 +3,66 @@
 {% block title %}Quizz index{% endblock %}
 
 {% block body %}
-    <h1>Quizz index</h1>
+    <h1 class="mb-3">Quizz</h1>
+    <div class="card">
+        <h5 class="card-header d-flex justify-content-between">
+            <span class="">Liste des quizzs</span>
+            <a href="{{ path('app_quizz_quizz_new') }}" class="btn btn-sm btn-primary">
+                <span class="material-symbols-outlined">
+                    add
+                </span>
+            </a>
+        </h5>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Categories</th>
+                    <th>Nbr joueurs</th>
+                    <th>Moyenne</th>
+                    <th>MAJ</th>
+                    <th>actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for quizz in quizzs %}
+                    <tr>
+                        <td>{{ quizz.id }}</td>
+                        <td>{{ quizz.title }}</td>
+                        <td>{{ quizz.description }}</td>
+                        <td>{{ categories(quizz.categorie) }}</td>
+                        <td>{{ nbJoueurs(quizz) }}</td>
+                        <td>{{ moyenne(quizz) }}</td>
+                        <td>N.D.</td>
+                        <td>
+                            <a href="{{ path('app_quizz_quizz_show', {'id': quizz.id}) }}" class="btn btn-sm btn-primary">
+                                <span class="material-symbols-outlined">
+                                    visibility
+                                </span>
+                            </a>
+                            <a href="{{ path('app_quizz_quizz_edit', {'id': quizz.id}) }}" class="btn btn-sm btn-warning">
+                                <span class="material-symbols-outlined">
+                                    edit
+                                </span>
+                            </a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer">
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for quizz in quizzs %}
-            <tr>
-                <td>{{ quizz.id }}</td>
-                <td>{{ quizz.title }}</td>
-                <td>{{ quizz.description }}</td>
-                <td>
-                    <a href="{{ path('app_quizz_quizz_show', {'id': quizz.id}) }}">show</a>
-                    <a href="{{ path('app_quizz_quizz_edit', {'id': quizz.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        </div>
+    </div>
 
-    <a href="{{ path('app_quizz_quizz_new') }}">Create new</a>
+
+
 {% endblock %}

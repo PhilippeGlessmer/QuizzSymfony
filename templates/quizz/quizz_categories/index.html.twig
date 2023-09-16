@@ -11,6 +11,7 @@
                 <th>Id</th>
                 <th>Name</th>
                 <th>Description</th>
+                <th>Nbr de Quizz</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -20,6 +21,7 @@
                 <td>{{ quizz_category.id }}</td>
                 <td>{{ quizz_category.name }}</td>
                 <td>{{ quizz_category.description }}</td>
+                <td>{{ nbQuizzs(quizz_category.quizzs) }}</td>
                 <td>
                     <a href="{{ path('app_quizz_quizz_categories_show', {'id': quizz_category.id}) }}">show</a>
                     <a href="{{ path('app_quizz_quizz_categories_edit', {'id': quizz_category.id}) }}">edit</a>

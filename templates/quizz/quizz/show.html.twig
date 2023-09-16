@@ -19,12 +19,64 @@
                 <th>Description</th>
                 <td>{{ quizz.description }}</td>
             </tr>
+            <tr>
+                <td>Actions</td>
+                <td>
+                    <a href="{{ path('app_quizz_quizz_edit', {'id': quizz.id}) }}">edit</a>
+                </td>
+            </tr>
         </tbody>
     </table>
 
+    {% for key, questions in quizz.quizzQuestions %}
+    <div class="card mb-3 card-question" data-valeur="{{ questions.id }}">
+        <h5 class="card-header d-flex justify-content-between">
+            <span>Question {{ key+1 }} : {{ questions.question }}</span>
+            <div>
+                <button type="button" class="btn btn-sm btn-warning p-0 btn-question" data-valeur="{{ questions.id }}" data-action="edit">
+                    <span class="material-symbols-outlined">
+                        edit
+                    </span>
+                </button>
+                <button type="button" class="btn btn-sm btn-danger p-0 btn-question" data-valeur="{{ questions.id }}" data-action="del">
+                    <span class="material-symbols-outlined">
+                        delete
+                    </span>
+                </button>
+            </div>
+        </h5>
+        <div class="card-body">
+            <ul class="list-group">
+            {%  for keyschoice, choices in questions.quizzChoices %}
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>{{ choices.reponse }}</span>
+                    <div>
+                        <span class="me-5">{{ indicatorChoices(choices.isCorrect) }}</span>
+                        <button type="button" class="btn btn-sm btn-warning p-0">
+                            <span class="material-symbols-outlined">
+                                edit
+                            </span>
+                        </button>
+                        <button type="button" class="btn btn-sm btn-danger p-0">
+                            <span class="material-symbols-outlined">
+                                delete
+                            </span>
+                        </button>
+                    </div>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+        <div class="card-footer">
+            <button type="button" class="btn btn-success">
+                <span class="material-symbols-outlined">
+                    add
+                </span>
+            </button>
+        </div>
+    </div>
+    {% endfor %}
     <a href="{{ path('app_quizz_quizz_index') }}">back to list</a>
 
-    <a href="{{ path('app_quizz_quizz_edit', {'id': quizz.id}) }}">edit</a>
 
-    {{ include('quizz/quizz/_delete_form.html.twig') }}
 {% endblock %}

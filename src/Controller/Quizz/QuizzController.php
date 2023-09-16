@@ -3,10 +3,14 @@
 namespace App\Controller\Quizz;
 
 use App\Entity\Quizz\Quizz;
+use App\Entity\Quizz\QuizzChoices;
+use App\Entity\Quizz\QuizzQuestions;
 use App\Form\Quizz\QuizzType;
 use App\Repository\Quizz\QuizzRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,6 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/backoffice/quizzs')]
 class QuizzController extends AbstractController
 {
+
     #[Route('/', name: 'app_quizz_quizz_index', methods: ['GET'])]
     public function index(QuizzRepository $quizzRepository): Response
     {
@@ -21,7 +26,6 @@ class QuizzController extends AbstractController
             'quizzs' => $quizzRepository->findAll(),
         ]);
     }
-
     #[Route('/new', name: 'app_quizz_quizz_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {

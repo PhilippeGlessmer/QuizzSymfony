@@ -13,14 +13,7 @@ import 'bootstrap';
 
 // You can specify which plugins you need
 import { Tooltip, Toast, Popover } from 'bootstrap';
-document.getElementById('side').addEventListener('click', function() {
-    let sidebar = document.getElementById('sidebar');
-    if (sidebar.style.width === '250px' || sidebar.style.width === '') {
-        sidebar.style.width = '80px';
-    } else {
-        sidebar.style.width = '250px';
-    }
-});
+
 if ($('body').attr('id') == "IndexController") {
    
 }

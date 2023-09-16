@@ -1,0 +1,185 @@
+{
+  "title": "Les bonnes pratiques en Symfony",
+  "questions": [
+    {
+      "question": "Quelle commande utilise-t-on pour créer un nouveau projet Symfony ?",
+      "choices": [
+        {"text": "symfony new my_project_name", "isCorrect": true},
+        {"text": "symfony create my_project_name", "isCorrect": false},
+        {"text": "symfony init my_project_name", "isCorrect": false},
+        {"text": "symfony start my_project_name", "isCorrect": false}
+      ]
+    },
+    {
+      "question": "Comment installe-t-on un bundle ?",
+      "choices": [
+        {"text": "composer require bundle_name", "isCorrect": true},
+        {"text": "composer install bundle_name", "isCorrect": false},
+        {"text": "symfony install bundle_name", "isCorrect": false},
+        {"text": "bundle install bundle_name", "isCorrect": false}
+      ]
+    },
+    {
+      "question": "Quelle commande pour vider le cache ?",
+      "choices": [
+        {"text": "php bin/console cache:clear", "isCorrect": true},
+        {"text": "php bin/console clear:cache", "isCorrect": false},
+        {"text": "symfony cache:clear", "isCorrect": false},
+        {"text": "php bin/console cache:delete", "isCorrect": false}
+      ]
+    },
+    {
+      "question": "Quel fichier pour configurer les routes ?",
+      "choices": [
+        {"text": "routes.yaml", "isCorrect": true},
+        {"text": "routing.yaml", "isCorrect": false},
+        {"text": "routes.php", "isCorrect": false},
+        {"text": "routing.php", "isCorrect": false}
+      ]
+    },
+    {
+      "question": "Comment créer un contrôleur ?",
+      "choices": [
+        {"text": "php bin/console make:controller", "isCorrect": true},
+        {"text": "php bin/console create:controller", "isCorrect": false},
+        {"text": "php bin/console controller:create", "isCorrect": false},
+        {"text": "php bin/console generate:controller", "isCorrect": false}
+      ]
+    },
+    {
+      "question": "Comment créer une nouvelle entité ?",
+      "choices": [
+        {"text": "php bin/console make:entity", "isCorrect": true},
+        {"text": "php bin/console create:entity", "isCorrect": false},
+        {"text": "php bin/console entity:create", "isCorrect": false},
+        {"text": "php bin/console generate:entity", "isCorrect": false}
+      ]
+    },
+    {
+      "question": "Comment exécuter les migrations ?",
+      "choices": [
+        {"text": "php bin/console doctrine:migrations:migrate", "isCorrect": true},
+        {"text": "php bin/console doctrine:migrate", "isCorrect": false},
+        {"text": "php bin/console migrate:run", "isCorrect": false},
+        {"text": "php bin/console doctrine:migrations:run", "isCorrect": false}
+      ]
+    },
+    {
+      "question": "Comment créer un formulaire ?",
+      "choices": [
+        {"text": "php bin/console make:form", "isCorrect": true},
+        {"text": "php bin/console form:create", "isCorrect": false},
+        {"text": "php bin/console create:form", "isCorrect": false},
+        {"text": "php bin/console generate:form", "isCorrect": false}
+      ]
+    },
+    {
+      "question": "Comment créer un utilisateur ?",
+      "choices": [
+        {"text": "php bin/console make:user", "isCorrect": true},
+        {"text": "php bin/console user:create", "isCorrect": false},
+        {"text": "php bin/console create:user", "isCorrect": false},
+        {"text": "php bin/console generate:user", "isCorrect": false}
+      ]
+    },
+    {
+      "question": "Comment créer un service ?",
+      "choices": [
+        {"text": "En le définissant dans services.yaml", "isCorrect": true},
+        {"text": "php bin/console make:service", "isCorrect": false},
+        {"text": "php bin/console service:create", "isCorrect": false},
+        {"text": "php bin/console create:service", "isCorrect": false}
+      ]
+    },
+    {
+      "question": "Comment créer un événement ?",
+      "choices": [
+        {"text": "En créant une classe et en la taguant comme 'kernel.event_listener'", "isCorrect": true},
+        {"text": "php bin/console make:event", "isCorrect": false},
+        {"text": "php bin/console event:create", "isCorrect": false},
+        {"text": "php bin/console create:event", "isCorrect": false}
+      ]
+    },
+    {
+      "question": "Quelle commande pour créer une migration ?",
+      "choices": [
+        {"text": "php bin/console make:migration", "isCorrect": true},
+        {"text": "php bin/console migration:create", "isCorrect": false},
+        {"text": "php bin/console create:migration", "isCorrect": false},
+        {"text": "php bin/console generate:migration", "isCorrect": false}
+      ]
+    },
+    {
+      "question": "Comment installer Symfony ?",
+      "choices": [
+        {"text": "composer create-project symfony/skeleton my_project_name", "isCorrect": true},
+        {"text": "composer install symfony/skeleton my_project_name", "isCorrect": false},
+        {"text": "symfony install my_project_name", "isCorrect": false},
+        {"text": "composer new symfony/skeleton my_project_name", "isCorrect": false}
+      ]
+    },
+    {
+      "question": "Comment déployer une application Symfony ?",
+      "choices": [
+        {"text": "Cela dépend de l’environnement de déploiement", "isCorrect": true},
+        {"text": "php bin/console deploy", "isCorrect": false},
+        {"text": "symfony deploy", "isCorrect": false},
+        {"text": "composer deploy", "isCorrect": false}
+      ]
+    },
+    {
+      "question": "Quelle commande pour voir la liste des routes ?",
+      "choices": [
+        {"text": "php bin/console debug:router", "isCorrect": true},
+        {"text": "php bin/console router:debug", "isCorrect": false},
+        {"text": "php bin/console list:routes", "isCorrect": false},
+        {"text": "php bin/console show:routes", "isCorrect": false}
+      ]
+    },
+    {
+      "question": "Quelle commande pour créer un CRUD ?",
+      "choices": [
+        {"text": "php bin/console make:crud", "isCorrect": true},
+        {"text": "php bin/console crud:generate", "isCorrect": false},
+        {"text": "php bin/console generate:crud", "isCorrect": false},
+        {"text": "php bin/console crud:create", "isCorrect": false}
+      ]
+    },
+    {
+      "question": "Comment créer un validateur personnalisé ?",
+      "choices": [
+        {"text": "En créant une classe et en la taguant comme 'validator.constraint_validator'", "isCorrect": true},
+        {"text": "php bin/console make:validator", "isCorrect": false},
+        {"text": "php bin/console validator:create", "isCorrect": false},
+        {"text": "php bin/console create:validator", "isCorrect": false}
+      ]
+    },
+    {
+      "question": "Comment créer un subscriber ?",
+      "choices": [
+        {"text": "En créant une classe et en la taguant comme 'kernel.event_subscriber'", "isCorrect": true},
+        {"text": "php bin/console make:subscriber", "isCorrect": false},
+        {"text": "php bin/console subscriber:create", "isCorrect": false},
+        {"text": "php bin/console create:subscriber", "isCorrect": false}
+      ]
+    },
+    {
+      "question": "Comment créer un DataFixtures ?",
+      "choices": [
+        {"text": "php bin/console make:fixtures", "isCorrect": true},
+        {"text": "php bin/console fixtures:create", "isCorrect": false},
+        {"text": "php bin/console create:fixtures", "isCorrect": false},
+        {"text": "php bin/console generate:fixtures", "isCorrect": false}
+      ]
+    },
+    {
+      "question": "Comment créer un test unitaire ?",
+      "choices": [
+        {"text": "php bin/console make:test", "isCorrect": true},
+        {"text": "php bin/console test:create", "isCorrect": false},
+        {"text": "php bin/console create:test", "isCorrect": false},
+        {"text": "php bin/console generate:test", "isCorrect": false}
+      ]
+    }
+  ]
+}
