@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New QuizzCategories{% endblock %}
+
+{% block body %}
+    <h1>Create new QuizzCategories</h1>
+
+    {{ include('quizz/quizz_categories/_form.html.twig') }}
+
+    <a href="{{ path('app_quizz_quizz_categories_index') }}">back to list</a>
+{% endblock %}

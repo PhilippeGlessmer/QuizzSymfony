@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}QuizzUser index{% endblock %}
+
+{% block body %}
+    <h1>QuizzUser index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Score</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for quizz_user in quizz_users %}
+            <tr>
+                <td>{{ quizz_user.id }}</td>
+                <td>{{ quizz_user.score }}</td>
+                <td>
+                    <a href="{{ path('app_quizz_quizz_user_show', {'id': quizz_user.id}) }}">show</a>
+                    <a href="{{ path('app_quizz_quizz_user_edit', {'id': quizz_user.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_quizz_quizz_user_new') }}">Create new</a>
+{% endblock %}
