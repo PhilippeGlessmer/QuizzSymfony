@@ -2,7 +2,10 @@
 
 namespace App\Entity\Utilisateur;
 
+use App\Entity\Quizz\QuizzUser;
 use App\Repository\Utilisateur\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -31,6 +34,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: QuizzUser::class)]
+    private Collection $quizzUsers;
+
+    public function __construct()
+    {
+        $this->quizzUsers = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -110,6 +121,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsVerified(bool $isVerified): static
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, QuizzUser>
+     */
+    public function getQuizzUsers(): Collection
+    {
+        return $this->quizzUsers;
+    }
+
+    public function addQuizzUser(QuizzUser $quizzUser): static
+    {
+        if (!$this->quizzUsers->contains($quizzUser)) {
+            $this->quizzUsers->add($quizzUser);
+            $quizzUser->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeQuizzUser(QuizzUser $quizzUser): static
+    {
+        if ($this->quizzUsers->removeElement($quizzUser)) {
+            // set the owning side to null (unless already changed)
+            if ($quizzUser->getUser() === $this) {
+                $quizzUser->setUser(null);
+            }
+        }
 
         return $this;
     }

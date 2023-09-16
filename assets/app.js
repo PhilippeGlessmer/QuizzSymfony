@@ -13,3 +13,8 @@ import 'bootstrap';
 
 // You can specify which plugins you need
 import { Tooltip, Toast, Popover } from 'bootstrap';
+
+if ($('body').attr('id') == "IndexController") {
+   
+}
+

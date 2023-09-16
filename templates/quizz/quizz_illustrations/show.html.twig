@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}QuizzIllustrations{% endblock %}
+
+{% block body %}
+    <h1>QuizzIllustrations</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ quizz_illustration.id }}</td>
+            </tr>
+            <tr>
+                <th>File</th>
+                <td>{{ quizz_illustration.file }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_quizz_quizz_illustrations_index') }}">back to list</a>
+
+    <a href="{{ path('app_quizz_quizz_illustrations_edit', {'id': quizz_illustration.id}) }}">edit</a>
+
+    {{ include('quizz/quizz_illustrations/_delete_form.html.twig') }}
+{% endblock %}
