@@ -3,11 +3,11 @@
 {% block title %}Edit QuizzCategories{% endblock %}
 
 {% block body %}
-    <h1>Edit QuizzCategories</h1>
+    <h1>Modification Categories</h1>
 
     {{ include('quizz/quizz_categories/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_quizz_quizz_categories_index') }}">back to list</a>
+    <a href="{{ path('app_quizz_quizz_categories_index') }}" class="btn btn-primary my-3">Retour</a>
 
     {# {{ include('quizz/quizz_categories/_delete_form.html.twig') }} #}
 {% endblock %}
