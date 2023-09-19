@@ -5,22 +5,34 @@
 {% block body %}
     <h1>Quizz</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ quizz.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ quizz.title }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ quizz.description }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">{{ quizz.id }}-{{ quizz.title }}</h3>
+            <h5>Description :</h5>
+            <p>{{ quizz.description }}</p>
+        </div>
+    </div>
+
+
+    {% for question in quizz.quizzQuestions %}
+        <div class="card my-4">
+        <div class="card-header">
+            <h5>{{question.id}}.) {{question}}</h5>
+        </div>
+
+        {% for reponse in question.quizzChoices %}
+
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">- {{reponse}}</li>
+        </ul>
+
+        {% endfor %}
+
+        </div>
+    {% endfor %}
+
+
+
 
     <a href="{{ path('app_quizz_quizz_index') }}">back to list</a>
 

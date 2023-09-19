@@ -30,6 +30,12 @@ class QuizzIllustrations
         return $this->id;
     }
 
+    public function __toString()
+    {
+        return $this->getFile(); 
+    }
+
+
     public function getFile(): ?string
     {
         return $this->file;

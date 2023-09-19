@@ -47,6 +47,11 @@ class Quizz
         return $this->id;
     }
 
+    public function __toString()
+{
+    return $this->getTitle(); 
+}
+
     public function getTitle(): ?string
     {
         return $this->title;

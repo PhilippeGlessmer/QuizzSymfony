@@ -22,9 +22,24 @@
         </tbody>
     </table>
 
+    {% for quizz in quizz_category.quizzs %}
+
+    {{dump(quizz)}}
+
+
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{quizz.title}}</h5>
+            <p class="card-text">{{quizz.description}}</p>
+            <a href="{{ path('app_quizz_quizz_show', {'id': quizz.id}) }}" class="btn btn-primary">Voir</a>
+        </div>
+    </div>
+
+    {% endfor %}
+
+
     <a href="{{ path('app_quizz_quizz_categories_index') }}">back to list</a>
 
     <a href="{{ path('app_quizz_quizz_categories_edit', {'id': quizz_category.id}) }}">edit</a>
 
-    {{ include('quizz/quizz_categories/_delete_form.html.twig') }}
 {% endblock %}

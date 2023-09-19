@@ -27,6 +27,12 @@ class QuizzUserAnswers
         return $this->id;
     }
 
+    public function __toString()
+    {
+        return $this->getUserQuizz(); 
+    }
+
+
     public function getUserQuizz(): ?QuizzUser
     {
         return $this->userQuizz;

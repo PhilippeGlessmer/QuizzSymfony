@@ -42,6 +42,12 @@ class QuizzChoices
         return $this->id;
     }
 
+    public function __toString()
+    {
+        return $this->getReponse(); 
+    }
+    
+
     public function getReponse(): ?string
     {
         return $this->reponse;

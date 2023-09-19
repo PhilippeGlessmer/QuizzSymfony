@@ -43,6 +43,12 @@ class QuizzQuestions
         return $this->id;
     }
 
+    public function __toString()
+    {
+        return $this->getQuestion(); 
+    }
+
+
     public function getQuestion(): ?string
     {
         return $this->question;

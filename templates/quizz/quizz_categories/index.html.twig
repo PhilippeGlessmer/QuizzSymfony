@@ -20,7 +20,7 @@
                 <th>Id</th>
                 <th>Catégories</th>
                 <th>Description</th>
-                <th>actions</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -35,6 +35,7 @@
                 {# <td></td> #}
                 <td> 
                 <div class="d-flex justify-content">
+                <a href="{{ path('app_quizz_quizz_categories_show', {'id': quizz_category.id}) }}" class="btn btn-primary mx-1">Voir</a> 
                     <a href="{{ path('app_quizz_quizz_categories_edit', {'id': quizz_category.id}) }}" class="btn btn-warning mx-1">
                     <span class="material-symbols-outlined">
                         edit
