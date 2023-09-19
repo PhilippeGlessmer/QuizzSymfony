@@ -31,8 +31,12 @@
             <tr>
                 <td>{{ quizz_category.id }}</td>
                 <td>{{ quizz_category.name }}</td>
-                <td>{{ quizz_category.description }}</td>
-                {# <td></td> #}
+                <td>
+                    {% set maxLength = 250 %} 
+                    {% set texteTronque = quizz_category.description|slice(0, maxLength) ~ (quizz_category.description|length > maxLength ? '...' : '') %}
+                    {{ texteTronque }}
+
+                </td>
                 <td> 
                 <div class="d-flex justify-content">
                 <a href="{{ path('app_quizz_quizz_categories_show', {'id': quizz_category.id}) }}" class="btn btn-primary mx-1">Voir</a> 

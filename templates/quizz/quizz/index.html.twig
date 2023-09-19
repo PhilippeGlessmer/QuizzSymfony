@@ -3,35 +3,67 @@
 {% block title %}Quizz index{% endblock %}
 
 {% block body %}
-    <h1>Quizz index</h1>
 
-    <table class="table">
+        <h1 class="my-4">Quizz</h1>
+        <div class="card">
+            <div class="card-header d-flex justify-content-between">
+                Liste des quizz<a href="{{ path('app_quizz_quizz_new') }}" class="btn btn-sm btn-primary">
+                <span class="material-symbols-outlined">
+                    add
+                </span></a>
+            </div>
+
+                <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Title</th>
                 <th>Description</th>
-                <th>actions</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
+
+
         {% for quizz in quizzs %}
+
             <tr>
                 <td>{{ quizz.id }}</td>
                 <td>{{ quizz.title }}</td>
-                <td>{{ quizz.description }}</td>
                 <td>
-                    <a href="{{ path('app_quizz_quizz_show', {'id': quizz.id}) }}">show</a>
-                    <a href="{{ path('app_quizz_quizz_edit', {'id': quizz.id}) }}">edit</a>
+                    {% set maxLength = 250 %} 
+                    {% set texteTronque = quizz.description|slice(0, maxLength) ~ (quizz.description|length > maxLength ? '...' : '') %}
+                    {{ texteTronque }}
+                <td> 
+                <div class="d-flex justify-content">
+                <a href="{{ path('app_quizz_quizz_show', {'id': quizz.id}) }}" class="btn btn-primary mx-1">Voir</a> 
+                    <a href="{{ path('app_quizz_quizz_edit', {'id': quizz.id}) }}" class="btn btn-warning mx-1">
+                    <span class="material-symbols-outlined">
+                        edit
+                    </span>
+                    </a>        
+                    <form method="post" action="{{ path('app_quizz_quizz_delete', {'id': quizz.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ quizz.id) }}">
+                        <button class="btn btn-danger mx-1">
+                            <span class="material-symbols-outlined">
+                                delete
+                            </span></button>
+                    </form>
+                    </div>
                 </td>
+
             </tr>
-        {% else %}
+
+            {% else %}
             <tr>
                 <td colspan="4">no records found</td>
             </tr>
         {% endfor %}
+
         </tbody>
     </table>
 
-    <a href="{{ path('app_quizz_quizz_new') }}">Create new</a>
+
+        </div>
+
 {% endblock %}
