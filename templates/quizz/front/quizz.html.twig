@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+
+    <h1>Quizz</h1>
+
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title"></h3>
+            <h5>Description :</h5>
+            <p></p>
+        </div>
+    </div>
+
+
+    {# {% for question in quizz.quizzQuestions %} #}
+        <div class="card my-4">
+        <div class="card-header">
+            <h5></h5>
+        </div>
+
+        {# {% for reponse in question.quizzChoices %} #}
+
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">- </li>
+        </ul>
+
+        {# {% endfor %} #}
+
+        </div>
+    {# {% endfor %} #}
+
+
+
+
+    <a href="{{ path('app_quizz_front_listequizz') }}" class="btn btn-primary my-3">Retour</a>
+
+
+
+{% endblock %}
