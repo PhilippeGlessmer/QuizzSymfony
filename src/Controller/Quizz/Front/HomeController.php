@@ -2,12 +2,14 @@
 
 namespace App\Controller\Quizz\Front;
 
+use App\Entity\Quizz\Quizz;
+use App\Entity\Quizz\QuizzCategories;
+use App\Repository\Quizz\QuizzRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Repository\Quizz\QuizzCategoriesRepository;
 use App\Repository\Quizz\QuizzChoicesRepository;
 use App\Repository\Quizz\QuizzQuestionsRepository;
-use App\Repository\Quizz\QuizzRepository;
+use App\Repository\Quizz\QuizzCategoriesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
@@ -33,25 +35,34 @@ class HomeController extends AbstractController
 
 
     #[Route('/quizz/front/{id}', name: 'app_quizz_front_listequizz')]
-    public function listequizz(QuizzCategoriesRepository $quizzcategorierepository, QuizzRepository $quizzrepository): Response
+    public function listequizz(QuizzCategories $quizzcategorie): Response
     {
         return $this->render('quizz/front/listQuizz.html.twig', [
             'controller_name' => 'HomeController',
-            'categories' => $quizzcategorierepository->findAll(),
-            'quizz' => $quizzrepository->findAll(),
+            'categories' => $quizzcategorie,
         ]);
     }
 
 
-    #[Route('/quizz/front/quizz', name: 'app_quizz_front_quizz')]
-    public function quizz(QuizzRepository $quizzrepository, QuizzQuestionsRepository $quizzquestionrepository, QuizzChoicesRepository $quizzchoicerepository): Response
+    #[Route('/quizz/front/quizz/{id}', name: 'app_quizz_front_quizz')]
+    public function quizz(Quizz $quizz): Response
     {
         return $this->render('quizz/front/quizz.html.twig', [
             'controller_name' => 'HomeController',
-            'quizz' => $quizzrepository->findAll(),
-            'question' => $quizzquestionrepository->findAll(),
-            // 'reponse' => $qu
+            'quizz' => $quizz,
         ]);
     }
+
+    // #[Route('/quizz/front/test', name: 'app_quizz_front_test')]
+    // public function test(QuizzCategories $quizzcategorie): Response
+    // {
+    //     return $this->render('quizz/front/test.html.twig', [
+    //         'controller_name' => 'HomeController',
+    //         // 'quizz' => $quizz,
+    //         'categories' => $quizzcategorie,
+
+    //     ]);
+    // }
+
 
 }

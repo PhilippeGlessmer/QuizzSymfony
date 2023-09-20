@@ -8,34 +8,42 @@
 
     <div class="card">
         <div class="card-body">
-            <h3 class="card-title"></h3>
+            <h3 class="card-title">{{quizz.title}}</h3>
             <h5>Description :</h5>
-            <p></p>
+            <p>{{quizz.description}}</p>
         </div>
     </div>
 
+    {# {{dump(quizz)}} #}
 
-    {# {% for question in quizz.quizzQuestions %} #}
+    {% for question in quizz.quizzQuestions %}
+
+        {# {{dump(question)}} #}
+
+
         <div class="card my-4">
         <div class="card-header">
-            <h5></h5>
+            <h5>{{question.question}}</h5>
         </div>
 
-        {# {% for reponse in question.quizzChoices %} #}
+        {% for reponse in question.quizzChoices %}
+
+        {# {{dump(reponse)}} #}
+
 
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">- </li>
+            <li class="list-group-item">- {{reponse.reponse}}</li>
         </ul>
 
-        {# {% endfor %} #}
+        {% endfor %}
 
         </div>
-    {# {% endfor %} #}
+    {% endfor %}
 
 
 
 
-    <a href="{{ path('app_quizz_front_listequizz') }}" class="btn btn-primary my-3">Retour</a>
+    <a href="{{ path('app_quizz_front_listequizz', {'id' : quizz.id}) }}" class="btn btn-primary my-3">Retour</a>
 
 
 
