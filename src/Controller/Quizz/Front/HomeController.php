@@ -5,6 +5,7 @@ namespace App\Controller\Quizz\Front;
 use App\Entity\Quizz\Quizz;
 use App\Entity\Quizz\QuizzCategories;
 use App\Repository\Quizz\QuizzRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\Quizz\QuizzChoicesRepository;
@@ -45,24 +46,33 @@ class HomeController extends AbstractController
 
 
     #[Route('/quizz/front/quizz/{id}', name: 'app_quizz_front_quizz')]
-    public function quizz(Quizz $quizz): Response
+    public function quizz(Quizz $quizz , Request $request): Response
     {
+
+        if ($request->isMethod('POST')){
+            $answers = $request->request->get('answers');
+            dd($request);
+        }
+
         return $this->render('quizz/front/quizz.html.twig', [
             'controller_name' => 'HomeController',
             'quizz' => $quizz,
         ]);
     }
 
-    // #[Route('/quizz/front/test', name: 'app_quizz_front_test')]
-    // public function test(QuizzCategories $quizzcategorie): Response
-    // {
-    //     return $this->render('quizz/front/test.html.twig', [
-    //         'controller_name' => 'HomeController',
-    //         // 'quizz' => $quizz,
-    //         'categories' => $quizzcategorie,
 
-    //     ]);
-    // }
+
+    #[Route('/quizz/teste', name: 'app_quizz_front_teste')]
+    public function teste(QuizzCategoriesRepository $quizzcategorierepository): Response
+    {
+        return $this->render('quizz/front/teste.html.twig', [
+            'controller_name' => 'HomeController',
+            // 'quizz' => $quizz,
+            'categories' => $quizzcategorierepository->find(2),
+
+        ]);
+    }
+
 
 
 }

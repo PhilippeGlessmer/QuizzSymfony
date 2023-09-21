@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+
+<h1>Catégorie :</h1>
+
+    {{dump(categories)}}
+
+    {% for quizz in categories.quizzs %}
+
+        <h5>Quizz :</h5>
+
+            {{dump(quizz)}}
+
+        {% for question in quizz.quizzQuestions %}   
+
+            <div class="card my-5" style="width: 50rem;">
+            <div class="card-header">
+            <p>question :</p>
+                {{dump(question)}}
+            </div>
+
+
+            <ul class="list-group list-group-flush">
+            <p>reponses :</p>
+
+                    {% for reponse in question.quizzChoices %}   
+                <li class="list-group-item">{{dump(reponse)}}</li>
+                    {% endfor %}
+
+            </ul>
+            </div>
+
+        {% endfor %}
+
+    {% endfor %}
+
+{% endblock %}
